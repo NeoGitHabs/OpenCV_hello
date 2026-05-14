@@ -14,6 +14,7 @@ if not cap.isOpened():
 
 
 while True:
+
     ret, frame = cap.read()
     if not ret:
         print('Frame not found')
@@ -29,13 +30,26 @@ while True:
             cls = int(n.cls[0])
             label = model.names[cls]
 
-
             if conf < 0.5:
                 continue
 
-            cv2.rectangle(frame, (x, y), (w, h), (0, 255, 255), 2)
-            cv2.putText(frame, f'{label}{conf:.2f}', (x, y-10),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+            cv2.rectangle(
+                frame,
+                (x, y),
+                (w, h),
+                (0, 255, 255),
+                2
+            )
+
+            cv2.putText(
+                frame,
+                f'{label}{conf:.2f}',
+                (x, y-10),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.7,
+                (0, 255, 0),
+                2
+            )
 
     key = cv2.waitKey(1) & 0xFF
     if key == ord('q'):
