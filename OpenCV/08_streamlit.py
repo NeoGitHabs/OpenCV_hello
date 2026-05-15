@@ -3,6 +3,7 @@ import streamlit as st
 import cv2
 import time
 
+
 st.title('OpenCV + YOLO + Streamlit')
 
 st.sidebar.header('Настройки')
